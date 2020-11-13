@@ -12,6 +12,32 @@ Please test this firmware and let us know if it misbehaves in any way. Volunteer
 
 ## Configured for The Secret Laboratory Mendelmax 1.5 variant
 
+/**
+ * Configuration.h
+ *
+ * Basic settings:
+ * SKR 1.4 Turbo      - LPC1769 
+ *                    - 32 bit 120MHz ARM level Cortex-M3 Processor
+ *                    - DCDC Mode V1.0 power module 
+ * Stepper Drivers    - 5X TMC2209 X,Y,Z1,Z2, and E0
+ * Temperature sensor - Extruder Semitec 104GT2 thermistor cartridge
+ *                    - Silicone heat bed NTC 100K 3950
+ * Printer geometry   - 250X320
+ * Endstops           - All homes are at minimum values. Min Endstops only
+ *                    - X and Y Sensorless Homing feature od TMC2209 Stepper Driver
+ *                    - Z Min BLTouch (3DTouch) ABL Sensor
+ * LCD controller     - Bigtree Tech TFT25
+ *                    - RepRap Full Graphic Smart Controller (emulation mode)
+ * Extra features:
+ *    Silicone Bed Heater jsr2industries. 24v 250W Max working temp. 125C° @room temperature Current 11A 2 Ohm
+ *    e3d v6heater cartrige Filistruedr. 24v 30w/40w options 6mm X 21mm.
+ *    Ext. Heater thermistor boards. ANET A8 MOSFET Board Upgrade. Heated Bed Power Module
+ *    OctoPi OctoPrint Server. RaspberryPi B
+ *    24VDC PSU. Makers Tool Works 24VDC Regulated 450 Watt. 5VDC PSU.  Genaric 5vdc 5A
+ * 
+ * Advanced settings can be found in Configuration_adv.h
+ */
+ 
 ## Marlin 2.0 Bugfix Branch
 
 __Not for production use. Use with caution!__
