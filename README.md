@@ -10,6 +10,8 @@
 Additional documentation can be found at the [Marlin Home Page](https://marlinfw.org/).
 Please test this firmware and let us know if it misbehaves in any way. Volunteers are standing by!
 
+## Configured for The Secret Laboratory Mendelmax 1.5 variant
+
 ## Marlin 2.0 Bugfix Branch
 
 __Not for production use. Use with caution!__
