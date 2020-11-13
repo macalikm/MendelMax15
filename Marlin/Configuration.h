@@ -1,71 +1,43 @@
 /**
  * Marlin 3D Printer Firmware
  * Copyright (c) 2020 MarlinFirmware [https://github.com/MarlinFirmware/Marlin]
- *
  * Based on Sprinter and grbl.
  * Copyright (c) 2011 Camiel Gubbels / Erik van der Zalm
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <https://www.gnu.org/licenses/>.
- *
+ * Adapted for the Secret Laboratory Mendelmax 1.5 Variant
+ * 2019 by Cathode Ray
+ * 
+ * Please Respect LICENSE file
+ * 
  */
 #pragma once
 
 /**
  * Configuration.h
  *
- * Basic settings such as:
- *
- * - Type of electronics
- * - Type of temperature sensor
- * - Printer geometry
- * - Endstop configuration
- * - LCD controller
- * - Extra features
- *
+ * Basic settings:
+ * SKR 1.4 Turbo      - LPC1769 
+ *                    - 32 bit 120MHz ARM level Cortex-M3 Processor
+ *                    - DCDC Mode V1.0 power module 
+ * Stepper Drivers    - 5X TMC2209 X,Y,Z1,Z2, and E0
+ * Temperature sensor - Extruder Semitec 104GT2 thermistor cartridge
+ *                    - Silicone heat bed NTC 100K 3950
+ * Printer geometry   - 250X320
+ * Endstops           - All homes are at minimum values. Min Endstops only
+ *                    - X and Y Sensorless Homing feature od TMC2209 Stepper Driver
+ *                    - Z Min BLTouch (3DTouch) ABL Sensor
+ * LCD controller     - Bigtree Tech TFT25
+ *                    - RepRap Full Graphic Smart Controller (emulation mode)
+ * Extra features:
+ *    Silicone Bed Heater jsr2industries. 24v 250W Max working temp. 125C° @room temperature Current 11A 2 Ohm
+ *    e3d v6heater cartrige Filistruedr. 24v 30w/40w options 6mm X 21mm.
+ *    Ext. Heater thermistor boards. ANET A8 MOSFET Board Upgrade. Heated Bed Power Module
+ *    OctoPi OctoPrint Server. RaspberryPi B
+ *    24VDC PSU. Makers Tool Works 24VDC Regulated 450 Watt. 5VDC PSU.  Genaric 5vdc 5A
+ * 
  * Advanced settings can be found in Configuration_adv.h
  */
 #define CONFIGURATION_H_VERSION 020007
-
-//===========================================================================
-//============================= Getting Started =============================
-//===========================================================================
-
-/**
- * Here are some standard links for getting your machine calibrated:
- *
- * https://reprap.org/wiki/Calibration
- * https://youtu.be/wAL9d7FgInk
- * http://calculator.josefprusa.cz
- * https://reprap.org/wiki/Triffid_Hunter%27s_Calibration_Guide
- * https://www.thingiverse.com/thing:5573
- * https://sites.google.com/site/repraplogphase/calibration-of-your-reprap
- * https://www.thingiverse.com/thing:298812
- */
-
-//===========================================================================
-//============================= DELTA Printer ===============================
-//===========================================================================
-// For a Delta printer start with one of the configuration files in the
-// config/examples/delta directory and customize for your machine.
-//
-
-//===========================================================================
-//============================= SCARA Printer ===============================
-//===========================================================================
-// For a SCARA printer start with the configuration files in
-// config/examples/SCARA and customize for your machine.
-//
 
 // @section info
 
@@ -120,7 +92,7 @@
  *
  * :[2400, 9600, 19200, 38400, 57600, 115200, 250000, 500000, 1000000]
  */
-#define BAUDRATE 115300   //mlm 250000
+#define BAUDRATE 115200   //mlm 250000
 
 // Enable the Bluetooth serial interface on AT90USB devices
 //#define BLUETOOTH
