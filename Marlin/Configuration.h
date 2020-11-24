@@ -717,9 +717,11 @@
  * Default Axis Steps Per Unit (steps/mm)
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
+ * see MM15Steps.txt 
+ * for Secret Labs Mendelmax 1.5 Hardware configuration 
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 4000, 500 }
-
+// mlm #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 4000, 500 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 1600, 481.31 }
 /**
  * Default Max Feed Rate (mm/s)
  * Override with M203

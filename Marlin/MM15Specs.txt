@@ -29,6 +29,7 @@
  */
  
  /**
+  * #Ddefine {X|Y|Z}_MICROSTEPS all set to 16 mlm
   * Default Axis Steps Per Unit (steps/mm)
   * Override with M92
   *                                      X, Y, Z, E0 [, E1[, E2...]]
