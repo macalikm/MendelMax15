@@ -1070,7 +1070,7 @@
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
 #define INVERT_X_DIR false          // set to true for stall guard
 #define INVERT_Y_DIR false
-#define INVERT_Z_DIR true
+#define INVERT_Z_DIR true           //mlm Positive Incriments move the bridge UP
 
 // @section extruder
 
@@ -1105,11 +1105,12 @@
 
 // The size of the print bed
 #define X_BED_SIZE 250  // Maker Tool Works 250X300 (mm)
-#define Y_BED_SIZE 300  // machined Aluminum bed plate with Boro Glass build plate
+#define Y_BED_SIZE 250  // default 300 determine actual Y travel
+                        // 250X300 machined Aluminum bed plate with Boro Glass build plate
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
-#define Y_MIN_POS -5    //mlm
+#define Y_MIN_POS 0    //mlm  -5?
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
