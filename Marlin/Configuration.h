@@ -16,24 +16,30 @@
  * Configuration.h
  *
  * Basic settings:
- * SKR 1.4 Turbo      - LPC1769 
- *                    - 32 bit 120MHz ARM level Cortex-M3 Processor
+ * Controller Board   - SKR 1.4 Turbo
+ *                    - LPC1769  32 bit 120MHz ARM level Cortex-M3 Processor
+ *                    - 512 kB Flash memory and 64 kB SRAM
  *                    - DCDC Mode V1.0 power module 
- * Stepper Drivers    - 5X TMC2209 X,Y,Z1,Z2, and E0
+ * Stepper Drivers    - 5X TMC2209 X,Y,Z1,Z2, and E0. Removed Diag Pins
  * Temperature sensor - Extruder Semitec 104GT2 thermistor cartridge
- *                    - Silicone heat bed NTC 100K 3950
+ *                    - Build Plate Silicone heat bed NTC 100K 3950
  * Printer geometry   - 250X320
+ * Auto Bed Level     - Antclabs BLTouch 
  * Endstops           - All homes are at minimum values. Min Endstops only
- *                    - X and Y Sensorless Homing feature od TMC2209 Stepper Driver
- *                    - Z Min BLTouch (3DTouch) ABL Sensor
- * LCD controller     - Bigtree Tech TFT25
+ *                    - Disabled Sensorless Homing feature of TMC2209 Stepper Drivers
+ *                    - X and Y PiBot Mechanical Endstop Rev2.0
+ *                    - Z Min ABL Sensor
+ * LCD controller     - Bigtree Tech TFT24
  *                    - RepRap Full Graphic Smart Controller (emulation mode)
  * Extra features:
- *    Silicone Bed Heater jsr2industries. 24v 250W Max working temp. 125C° @room temperature Current 11A 2 Ohm
- *    e3d v6heater cartrige Filistruedr. 24v 30w/40w options 6mm X 21mm.
- *    Ext. Heater thermistor boards. ANET A8 MOSFET Board Upgrade. Heated Bed Power Module
+ *    Silicone Bed Heater jsr2industries. 24v 250W Max working temp. 
+ *    125C° @room temperature Current 11A 2 Ohm
+ *    Filistruder E3D V6 heater cartrige. 24v 30w/40w options 6mm X 21mm.
+ *    ANET A8 MOSFET Board Upgrade. Heated Bed and Extruder Power Module
  *    OctoPi OctoPrint Server. RaspberryPi B
- *    24VDC PSU. Makers Tool Works 24VDC Regulated 450 Watt. 5VDC PSU.  Genaric 5vdc 5A
+ *    24VDC PSU. Makers Tool Works 24VDC Regulated 450 Watt.
+ *    12VDC DC-DC Converter 
+ *    5VDC PSU.  Genaric 5vdc 5A
  * 
  * Advanced settings can be found in Configuration_adv.h
  */
@@ -493,7 +499,7 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED
 
 //#define BED_LIMIT_SWITCHING
 
@@ -536,7 +542,7 @@
  * *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***
  */
 #define PREVENT_COLD_EXTRUSION
-#define EXTRUDE_MINTEMP 170
+// mlm enable before release #define EXTRUDE_MINTEMP 170
 
 /**
  * Prevent a single extrusion longer than EXTRUDE_MAXLENGTH.
@@ -625,8 +631,11 @@
 #endif
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
-#define X_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
-#define Y_MIN_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
+// PiBot Mech Endstop  = true
+// Sensorless Homing   = false
+// BLTouch             = true
+#define X_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
+#define Y_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
 #define Z_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
 #define X_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
 #define Y_MAX_ENDSTOP_INVERTING false // Set to true to invert the logic of the endstop.
@@ -975,7 +984,7 @@
 #define PROBING_MARGIN 20   //mlm 10
 
 // X and Y axis travel speed (mm/min) between probes
-#define XY_PROBE_SPEED (133*60)
+#define XY_PROBE_SPEED (20*60)    //mlm default (133*60)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
@@ -1104,8 +1113,8 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 250  // Maker Tool Works 250X300 (mm)
-#define Y_BED_SIZE 250  // default 300 determine actual Y travel
+#define X_BED_SIZE 230  // Maker Tool Works 250X300 (mm)
+#define Y_BED_SIZE 300  // default 300 determine actual Y travel
                         // 250X300 machined Aluminum bed plate with Boro Glass build plate
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
@@ -1114,8 +1123,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 160   // Z Max TBD
-
+#define Z_MAX_POS 140   // Z Max TBD
 /**
  * Software Endstops
  *
@@ -1371,12 +1379,20 @@
 #define Z_SAFE_HOMING   //mlm
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT X_CENTER  // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT Y_CENTER  // Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 95       //MLM X_CENTER  // X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT 80       //MLM Y_CENTER  // Y point for Z homing
 #endif
 
-// Homing speeds (mm/min)
-#define HOMING_FEEDRATE_XY (50*60)
+/** Homing speeds (mm/min)
+ * Attempting to reduce spastic movement while moving x and y during homing
+ * Configuration.h
+ * #define HOMING_FEEDRATE_XY (20*60)
+ *
+ * Configuration_adv.h
+ * #define HOMING_BUMP_DIVISOR { 5, 5, 4 } // Re-Bump Speed Divisor (Divides the Homing Feedrate)
+ */
+
+#define HOMING_FEEDRATE_XY (20*60)  //mlm (50*60)
 #define HOMING_FEEDRATE_Z  (4*60)
 
 // Validate that endstops are triggered on homing moves

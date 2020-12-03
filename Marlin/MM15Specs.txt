@@ -4,25 +4,15 @@
  * Settings From:
  * M:\Documents\GitHub\Marlin-2.0x\Marlin\Configuration.h
  *
- * Basic settings:
- *
- * Arduino Mega 2650 and RAMPS 1.4
- * **CHANGED UltiMachine mini-RAMBo 1.3 Main Board to Arduino Mega and Ramps
- * Temperature sensor - Extruder Semitec 104GT2 thermistor cartridge
- *                    - Silicone heat bed NTC 100K 3950
- * Printer geometry   - 250X320
- * Endstops           - All homes are at minimum values. Min Endstops only
- *                    - X and Y PiBot Mechanical Endstop Rev2.0
- *                    - Z Min BLTouch (3DTouch) ABL Sensor
- * LCD controller     - RepRap Full Graphic Smart Controller
+ 
+ 
  * Extra features:
  *    Silicone Bed Heater jsr2industries. 24v 250W Max working temp. 125C° @room temperature Current 11A 2 Ohm
- *    e3d v6heater cartrige Filistruedr. 24v 30w/40w options 6mm X 21mm.
+ *    E3d V6 heater cartrige Filistruedr. 24v 30w/40w options 6mm X 21mm.
  *    Ext. Heater thermistor boards. ANET A8 MOSFET Board Upgrade. Heated Bed Power Module
  *    OctoPi OctoPrint Server. RaspberryPi B
  *    24VDC PSU. Makers Tool Works 24VDC Regulated 450 Watt
  *    5VDC PSU.  Genaric 5vdc 5A
- *
  *
  * Advanced settings can be found in Configuration_adv.h
  *
@@ -62,3 +52,5 @@
   */
 
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 1600, 481.31 }
+
+79dabedc-d85e-416e-9c7a-8b1936a7f1a9
