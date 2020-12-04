@@ -632,7 +632,7 @@
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
 // PiBot Mech Endstop  = true
-// Sensorless Homing   = false
+#define Sensorless Homing   = false
 // BLTouch             = true
 #define X_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
 #define Y_MIN_ENDSTOP_INVERTING true // Set to true to invert the logic of the endstop.
@@ -669,11 +669,11 @@
 #define Z_DRIVER_TYPE  TMC2209
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
-//#define Z2_DRIVER_TYPE TMC2209    //mlm Dual Z stepper driver (uses E1 driver for Z2)
+#define Z2_DRIVER_TYPE TMC2209    //mlm Dual Z stepper driver (uses E1 driver for Z2)
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
 #define E0_DRIVER_TYPE TMC2209
-//#define E1_DRIVER_TYPE A4988
+//#define E1_DRIVER_TYPE TMC2209
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
 //#define E4_DRIVER_TYPE A4988
@@ -850,7 +850,7 @@
  *      - normally-open switches to 5V and D32.
  */
 //#define Z_MIN_PROBE_PIN 32 // Pin 32 is the RAMPS default
-//#define Z_MIN_PROBE_PIN 10    //mlm
+//#define Z_MIN_PROBE_PIN 10    //mlm Pin 10  is the SKR 1.4 default
 
 /**
  * Probe Type
@@ -929,7 +929,7 @@
 
 // Duet Smart Effector (for delta printers) - https://bit.ly/2ul5U7J
 // When the pin is defined you can use M672 to set/reset the probe sensivity.
-//#define DUET_SMART_EFFECTOR
+#define DUET_SMART_EFFECTOR
 #if ENABLED(DUET_SMART_EFFECTOR)
   #define SMART_EFFECTOR_MOD_PIN  -1  // Connect a GPIO pin to the Smart Effector MOD pin
 #endif
@@ -984,7 +984,7 @@
 #define PROBING_MARGIN 20   //mlm 10
 
 // X and Y axis travel speed (mm/min) between probes
-#define XY_PROBE_SPEED (20*60)    //mlm default (133*60)
+#define XY_PROBE_SPEED (30*60)    //mlm default (133*60)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
@@ -1113,8 +1113,8 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 230  // Maker Tool Works 250X300 (mm)
-#define Y_BED_SIZE 300  // default 300 determine actual Y travel
+#define X_BED_SIZE 226  // Maker Tool Works 250X300 (mm)
+#define Y_BED_SIZE 296  // default 300 determine actual Y travel
                         // 250X300 machined Aluminum bed plate with Boro Glass build plate
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
