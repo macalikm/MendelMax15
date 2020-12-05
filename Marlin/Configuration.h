@@ -543,8 +543,10 @@
  *
  * *** IT IS HIGHLY RECOMMENDED TO LEAVE THIS OPTION ENABLED! ***
  */
+
+// mlm enable before release 
 #define PREVENT_COLD_EXTRUSION
-// mlm enable before release #define EXTRUDE_MINTEMP 170
+#define EXTRUDE_MINTEMP 170
 
 /**
  * Prevent a single extrusion longer than EXTRUDE_MAXLENGTH.
