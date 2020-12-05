@@ -476,9 +476,9 @@
     #define DEFAULT_Ki_LIST {   1.08,   1.08 }
     #define DEFAULT_Kd_LIST { 114.00, 114.00 }
   #else
-    #define DEFAULT_Kp  22.20
-    #define DEFAULT_Ki   1.08
-    #define DEFAULT_Kd 114.00
+    #define DEFAULT_Kp  39.83   //mlm values for E0 E3D v6 (uninsulated)
+    #define DEFAULT_Ki   3.51
+    #define DEFAULT_Kd 112.88
   #endif
 #endif // PIDTEMP
 
@@ -515,11 +515,13 @@
   //#define MIN_BED_POWER 0
   //#define PID_BED_DEBUG // Sends debug data to the serial port.
 
+  // 24V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
+  // kp 139.14    kI 24.64  Kd  501.49
   // 120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   // from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 10.00
-  #define DEFAULT_bedKi .023
-  #define DEFAULT_bedKd 305.4
+  #define DEFAULT_bedKp 139.14
+  #define DEFAULT_bedKi 24.64
+  #define DEFAULT_bedKd 501.49
 
   // FIND YOUR OWN: "M303 E-1 C8 S90" to run autotune on the bed at 90 degreesC for 8 cycles.
 #endif // PIDTEMPBED
@@ -1113,8 +1115,8 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 226  // Maker Tool Works 250X300 (mm)
-#define Y_BED_SIZE 296  // default 300 determine actual Y travel
+#define X_BED_SIZE 220  // Maker Tool Works 250X300 (mm)
+#define Y_BED_SIZE 290  // default 300 determine actual Y travel
                         // 250X300 machined Aluminum bed plate with Boro Glass build plate
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
@@ -1379,8 +1381,8 @@
 #define Z_SAFE_HOMING   //mlm
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT 95       //MLM X_CENTER  // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT 80       //MLM Y_CENTER  // Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 110       //MLM X_CENTER  // X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT 150      //MLM Y_CENTER  // Y point for Z homing
 #endif
 
 /** Homing speeds (mm/min)
