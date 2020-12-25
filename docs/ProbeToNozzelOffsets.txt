@@ -28,4 +28,5 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { -27.1, -71.0, 0 }
+#define NOZZLE_TO_PROBE_OFFSET { -27.1, -71.0, 0 }  // Z values are typically around -1.2
+                                                    // when BL Touch is set up with the 8mm spacer 

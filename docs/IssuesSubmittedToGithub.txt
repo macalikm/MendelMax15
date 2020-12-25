@@ -1,18 +1,48 @@
-x and y vibrate when moving to the z safe homing point #20351
- Open
-macalikm opened this issue 2 minutes ago · 0 comments
- Open
-x and y vibrate when moving to the z safe homing point
-#20351
-macalikm opened this issue 2 minutes ago · 0 comments
-Comments
-@macalikm
- 
-macalikm commented 2 minutes ago
-Before Reporting a Bug
-Test with the bugfix-2.0.x branch to see whether the issue still exists.
+Short answer:
+make XY_PROBE_RATE the same as HOMING_FEEDRATE_XY
+In My case:
+#define XY_PROBE_SPEED (20*60)
+#define HOMING_FEEDRATE_XY (20*60)
 
-Get troubleshooting help from the Marlin community to confirm it's a bug and not just a configuration error. Links at https://github.com/MarlinFirmware/Marlin/issues/new/choose
+Slow but stable.
+
+
+Long answer:
+
+#17857
+acwest opened this issue on May 3 · 5 comments
+Comments
+@acwest
+acwest commented on May 3 •
+Bug Description
+When homing with G28 Marlin (at least in Bugfix-2.0.x, I didn't check any other versions) 
+is using the wrong speed to move to the safe homing position. Currently the code is using 
+XY_PROBE_SPEED, which is the speed to use when moving between points while doing ABL, 
+which may or may not be configured by the user. This speed is often set quite high 
+(the default is certainly quite high on my system), which tends to cause quite a lot of 
+noise at the beginning of every print.
+
+This should probably be HOMING_FEEDRATE_XY, as this is part of every G28, not ABL at all.
+
+My Configurations
+configuration.zip
+
+Steps to Reproduce
+G28 (with safe homing enabled)
+Expected behavior: homes using the homing feedrate
+
+Actual behavior: homes using the ABL probing feedrate
+
+Additional Information
+The code in Marlin/src/gcode/calibrate/G28.cpp uses do_blocking_move_to for both quick_home_xy() and home_z_safely(), while it should probably be using do_homing_move()
+The other possibility is that do_blocking_move_to() should use homing_feedrate() for xy, it already uses it for z, but it seems unlikely (although the fact that it uses it for Z might be a bug)
+
+@thinkyhead
+Member
+thinkyhead commented on May 5
+When not defined HOMING_FEEDRATE_XY is assigned to it automatically. It is the preferred setting to use because it is intended to differentiate the speed that could harm the probe from the speed of approach to endstops.
+
+@thinkyhead thinkyhead closed this on May 5
 
 Instructions
 Fill out every section of the template below.
