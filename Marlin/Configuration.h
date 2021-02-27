@@ -673,10 +673,10 @@
 #define Z_DRIVER_TYPE  TMC2209
 //#define X2_DRIVER_TYPE A4988
 //#define Y2_DRIVER_TYPE A4988
-#define Z2_DRIVER_TYPE TMC2209    //mlm Dual Z stepper driver (uses E1 driver for Z2)
+//#define Z2_DRIVER_TYPE TMC2209    //mlm Dual Z stepper driver (uses E1 driver for Z2)
 //#define Z3_DRIVER_TYPE A4988
 //#define Z4_DRIVER_TYPE A4988
-#define E0_DRIVER_TYPE TMC2209
+//#define E0_DRIVER_TYPE TMC2209
 //#define E1_DRIVER_TYPE TMC2209
 //#define E2_DRIVER_TYPE A4988
 //#define E3_DRIVER_TYPE A4988
@@ -740,7 +740,7 @@
  * Override with M203
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 20, 25 }  //mlm { 300, 300, 5, 25 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 5, 25 }  //mlm { 300, 300, 5, 25 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
@@ -988,7 +988,7 @@
 #define PROBING_MARGIN 10   //mlm 10
 
 // X and Y axis travel speed (mm/min) between probes
-#define XY_PROBE_SPEED (30*60)    //mlm default (133*60)
+#define XY_PROBE_SPEED (20*60)    //mlm default (133*60)
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 #define Z_PROBE_SPEED_FAST HOMING_FEEDRATE_Z
@@ -1081,7 +1081,7 @@
 // @section machine
 
 // Invert the stepper direction. Change (or reverse the motor connector) if an axis goes the wrong way.
-#define INVERT_X_DIR false          // set to true for stall guard
+#define INVERT_X_DIR false           // set to true for stall guard
 #define INVERT_Y_DIR false
 #define INVERT_Z_DIR true           //mlm Positive Incriments move the bridge UP
 
@@ -1101,7 +1101,7 @@
 
 //#define NO_MOTION_BEFORE_HOMING // Inhibit movement until all axes have been homed
 
-//#define UNKNOWN_Z_NO_RAISE      // Don't raise Z (lower the bed) if Z is "unknown." For beds that fall when Z is powered off.
+#define UNKNOWN_Z_NO_RAISE      // Don't raise Z (lower the bed) if Z is "unknown." For beds that fall when Z is powered off.
 
 //#define Z_HOMING_HEIGHT  4      // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
                                   // Be sure to have this much clearance over your Z_MAX_POS to prevent grinding.
@@ -1117,7 +1117,7 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 220  // Maker Tool Works 250X300 (mm)
+#define X_BED_SIZE 210  // Maker Tool Works 250X300 (mm)
 #define Y_BED_SIZE 275  // default 300 determine actual Y travel
                         // 250X300 machined Aluminum bed plate with Boro Glass build plate
 
@@ -1396,8 +1396,8 @@
  * #define HOMING_BUMP_DIVISOR { 5, 5, 4 } // Re-Bump Speed Divisor (Divides the Homing Feedrate)
  */
 
-#define HOMING_FEEDRATE_XY (30*60)  //mlm (50*60)
-#define HOMING_FEEDRATE_Z  (20*60)  //mlm (4*60)
+#define HOMING_FEEDRATE_XY (20*60)  //mlm (50*60)
+#define HOMING_FEEDRATE_Z  (4*60)  //mlm (4*60)
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -1506,7 +1506,7 @@
 
 // Preheat Constants
 #define PREHEAT_1_LABEL       "PLA"
-#define PREHEAT_1_TEMP_HOTEND 200
+#define PREHEAT_1_TEMP_HOTEND 220
 #define PREHEAT_1_TEMP_BED     70
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
@@ -1774,7 +1774,7 @@
  *
  * Test your encoder's behavior first with both options disabled.
  *
- *  Reversed Value Edit and Menu Nav? Enable REVERSE_ENCODER_DIRECTION.
+ *  Reversed Value Edit and Menu Nav? Enable REVERSE_ENCODx_dirIRECTION.
  *  Reversed Menu Navigation only?    Enable REVERSE_MENU_DIRECTION.
  *  Reversed Value Editing only?      Enable BOTH options.
  */
@@ -1792,7 +1792,7 @@
 //  If CLOCKWISE normally moves DOWN this makes it go UP.
 //  If CLOCKWISE normally moves UP this makes it go DOWN.
 //
-#define REVERSE_MENU_DIRECTION
+//#define REVERSE_MENU_DIRECTION
 
 //
 // This option reverses the encoder direction for Select Screen.

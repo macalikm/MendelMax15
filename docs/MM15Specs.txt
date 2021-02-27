@@ -27,30 +27,34 @@
   *  e_steps_per_mm = (motor_steps_per_rev * driver_microstep) * (big_gear_teeth / small_gear_teeth)
   *  / (hob_effective_diameter * pi)
   *  Wade extruder with "olde Timey Spur Gear" 43:13 gear ratio
-  *  NEMA 17 Motor
-  *  200 steps/rev
+  *  200 steps/rev NEMA 17 Motor 
   *  16 microsteps
   *  7mm hobbed bolt grip area (approx.)
   *  Pi You know what Pi is?
-  *  (200 * 16) * (43 / 13) / (7 * 3.14159) = 481.31
+  *  So:
+  *   e_steps_per_mm = (200 * 16) * (43 / 13) / (7 * 3.14159)
+  *   e_steps_per_mm 481.31
   */
   
  /**
   *  Z Steps
   *  steps_per_mm = (motor_steps_per_rev * driver_microstep) / thread_pitch
   *  200 steps/rev
+  *  256 steps/rev with BTT S42B Closed-loop Stepper Motor Controller
   *  16 microsteps
   *  2mm/turn thread pitch (ACME Machine Screw)
-  *  z =(200 * 16) / 2 = 1600
+  *  z = (200 * 16) / 2 = 1600
+  *  z = (256 * 16) / 2 = 2048
   */
 
  /**
   *  X Y Steps
-  * steps_per_mm = (motor_steps_per_rev * driver_microstep) / number_of_pulley_teeth)
-  * NEMA 17 motor with T2 belt and 20-tooth pulley
+  * steps_per_mm = (motor_steps_per_rev * driver_microstep) / (belt_pitch * number_of_pulley_teeth)
+  * NEMA 17 motor with GT2 (2mm) pitch belt and 20-tooth pulley
   * x = y = (200 * 16) / (2 * 20) = 80
+  *       = (256 * 16) / (2 * 20) = 102.4
   */
 
 #define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 1600, 481.31 }
-
-79dabedc-d85e-416e-9c7a-8b1936a7f1a9
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 102.4, 102.4, 2048, 481.31 }
+Machine UUID 79dabedc-d85e-416e-9c7a-8b1936a7f1a9
